@@ -4,6 +4,8 @@ GEDEX automates the retrieval of `Virus name`, `Collection date`, `Originating l
 
 ## Usage
 
+### gedex_fetch.js
+
 1. Access the EPI_SET URL and ensure the sequence blocks are expanded.
 
 2. Open the browser's Developer Tools:
@@ -16,11 +18,11 @@ GEDEX automates the retrieval of `Virus name`, `Collection date`, `Originating l
 3. Copy the script below, paste it into the console, and press `Enter`.
 
 <details>
-<summary>GEDEX.js</summary>
+<summary>gedex_fetch.js</summary>
 
 
 ```javascript
-// GEDEX.js
+// gedex_fetch.js
 
 (function() {
 	'use strict';
@@ -309,7 +311,26 @@ GEDEX automates the retrieval of `Virus name`, `Collection date`, `Originating l
 
 4. Click `Run` in the GEDEX panel. Upon completion, a JSON file is automatically downloaded.
 
+### gedex_parse.ipynb
+
+1. Go to the [Google Colab Platform](https://colab.research.google.com)
+
+2. Under `Open notebook`, select the `Github`
+
+3. Enter the following link in `Enter a GitHub URL or search by organisation or user`:
+
+```
+https://github.com/khourious/GEDEX
+```
+
+4. Click `search`, and after a brief scan, select `gedex_parse.ipynb`.
+
+5. Upload the JSON file obtained from `gedex_fetch.js` using the file browser panel.
+
+6. Click `Run all` in the Colab toolbar. Upon completion, a CSV file is automatically downloaded.
+
 ## Notes
 
-- The GEDEX.js sequentially clicks through each visible EPI_ISL entry in the expanded EPI_SET view, waits for the acknowledgment pop-up to render, and captures its content.
-- Due to variable page loading and popup behavior, some entries may fail initially. The script retries each popup up to three times and queues failures for a second pass. A small subset may remain inaccessible depending on browser or rendering conditions.
+- The `gedex_fetch.js` sequentially clicks through each visible EPI_ISL entry in the expanded EPI_SET view, waits for the acknowledgment pop-up to render, and captures its content.
+- Due to variable page loading and popup behavior, some entries may fail initially. The `gedex_fetch.js` retries each popup up to three times and queues failures for a second pass. A small subset may remain inaccessible depending on browser or rendering conditions.
+- The `gedex_parse.ipynb` parses the raw JSON content, extracts structured metadata fields, removes duplicate accessions, and exports a CSV file.
